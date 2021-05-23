@@ -1,0 +1,37 @@
+@charset "ISO-8859-1";
+
+body {
+	background-image: url("../images/admin.jpg");
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	font-weight: 600;
+	font-size: 16px;
+	-webkit-background-size: cover;
+	color: white;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.btn-grad {
+	background-image: linear-gradient(to right, #FF512F 0%, #F09819 51%, #FF512F 100%)
+}
+
+.btn-grad {	
+	padding: 10px 10px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	display: block;
+}
+
+.btn-grad:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	text-decoration: none;
+}

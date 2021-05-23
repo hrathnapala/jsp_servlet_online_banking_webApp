@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-	id="WebApp_ID" version="4.0">	
+	id="WebApp_ID" version="4.0">
 	<display-name>Online_Banking</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -60,5 +60,36 @@
 		<servlet-name>edituserForm</servlet-name>
 		<url-pattern>/edituserForm</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+		<servlet-name>employeeDashboard</servlet-name>
+		<jsp-file>/WEB-INF/views/employee_dashboard.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>employeeDashboard</servlet-name>
+		<url-pattern>/employeeDashboard</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>customerForm</servlet-name>
+		<jsp-file>/WEB-INF/views/customer_form.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>customerForm</servlet-name>
+		<url-pattern>/customerForm</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>customerEditForm</servlet-name>
+		<jsp-file>/WEB-INF/views/customer_edit_delete_form.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>customerEditForm</servlet-name>
+		<url-pattern>/customerEditForm</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>customerDashboard</servlet-name>
+		<jsp-file>/WEB-INF/views/customerDashboard.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>customerDashboard</servlet-name>
+		<url-pattern>/customerDashboard</url-pattern>
+	</servlet-mapping>
 </web-app>

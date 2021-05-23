@@ -47,7 +47,7 @@
 
 	<form name="loginForm" class="box" action="LoginServlet" method="post">
 		<h1>Login</h1>
-		<input type="text" name="username" placeholder="username"> <input
+		<input type="text" name="username" placeholder="Login ID"> <input
 			type="password" name="password" placeholder="Password"> <span
 			style="color: red;">${error}</span> <input type="submit" name=""
 			value="Login" onclick="return validate();">

@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.obs.model.EmployeeModel;
+import com.obs.model.CustomerModel;
 
 import service.UserController;
 
 /**
- * Servlet implementation class UserServlet
+ * Servlet implementation class AddCustomer
  */
-@WebServlet("/AddUserServlet")
-public class AddUserServlet extends HttpServlet {
+@WebServlet("/AddCustomer")
+public class AddCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddUserServlet() {
+	public AddCustomer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,23 +45,26 @@ public class AddUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
-
-		String eid = request.getParameter("eid");
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
+		String accountnumber = request.getParameter("accountnumber");
 		String nic = request.getParameter("nic");
+		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String phonenumber = request.getParameter("phonenumber");
+		String account_balance = request.getParameter("accountbalance");
+		boolean status = request.getParameter("status") == null ? false : true;
 		String password = request.getParameter("password");
 
-		EmployeeModel user = new EmployeeModel(eid, name, email, address, phonenumber, password, nic);
+		CustomerModel user = new CustomerModel(name, Long.parseLong(accountnumber), nic, email, address,
+				Integer.parseInt(phonenumber), Double.parseDouble(account_balance), status, password);
 
 		UserController h = new UserController();
-		h.addEmployee(user);
+		h.addCustomer(user);
 
 		request.setAttribute("user", user);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("adminPage");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("employeeDashboard");
 		dispatcher.forward(request, response);
+		
 	}
 
 }

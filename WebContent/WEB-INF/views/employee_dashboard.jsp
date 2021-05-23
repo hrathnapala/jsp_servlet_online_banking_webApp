@@ -1,3 +1,4 @@
+<%@page import="com.obs.model.CustomerModel"%>
 <%@page import="com.obs.model.EmployeeModel"%>
 <%@page import="service.UserController"%>
 <%@page import="com.obs.model.AdminModel"%>
@@ -22,7 +23,7 @@
 			class="navbar navbar-expand-md navbar-dark d-flex justify-content-between"
 			style="background-color: black">
 			<div>
-				<a href="#" class="navbar-brand "> Admin Dashboard </a>
+				<a href="#" class="navbar-brand "> Employee Dashboard </a>
 			</div>
 
 			<ul class="navbar-nav">
@@ -39,18 +40,20 @@
 			<hr>
 			<div class="container text-left">
 
-				<a href="userForm" class="btn btn-success">Add New Employee</a>
+				<a href="customerForm" class="btn btn-success">Add New Customer</a>
 			</div>
 			<br>
 			<table class="table table-bordered" style="color: white;">
 				<thead>
 					<tr>
-						<th>Employee ID</th>
-						<th>Name</th>
-						<th>Email</th>						
+						<th>Customer Name</th>
+						<th>Account Number</th>
+						<th>NIC</th>						
+						<th>Email</th>
 						<th>Address</th>
 						<th>Phone Number</th>
-						<th>NIC</th>
+						<th>Account Balance</th>
+						<th>Account Status</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -58,22 +61,24 @@
 				<tbody>
 					<%
 					UserController hs = new UserController();
-											ArrayList<EmployeeModel> al = hs.getEmployeeList();
+								ArrayList<CustomerModel> al = hs.getCustomerList();
 
-											for (EmployeeModel e : al) {
+								for (CustomerModel e : al) {
 					%>
 
 					<tr>
-						<td><%=e.getEid()%></td>
 						<td><%=e.getName()%></td>
+						<td><%=e.getAccount_number()%></td>
+						<td><%=e.getNic()%></td>
 						<td><%=e.getEmail()%></td>
 						<td><%=e.getAddress()%></td>
-						<td><%=e.getPhonenumber()%></td>
-						<td><%=e.getNic()%></td>
+						<td>0<%=e.getPhonenumber()%></td>
+						<td><%=e.getAccount_balance()%></td>
+						<td><%=e.isStatus()%></td>
 						<td
 							style="display: flex; justify-content: center; align-items: center;">
-							<form method="POST" action="GetUserServlet">
-								<input type="hidden" name="id" value="<%=e.getEid()%>" /> <input
+							<form method="POST" action="GetCustomer">
+								<input type="hidden" name="acno" value="<%=e.getAccount_number()%>" /> <input
 									type="submit" value="EDIT/DELETE" class="btn-grad" />
 							</form>
 

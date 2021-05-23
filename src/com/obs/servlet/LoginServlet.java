@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.obs.model.AdminModel;
+import com.obs.model.CustomerModel;
+import com.obs.model.EmployeeModel;
 
-import service.AdminController;
+import service.UserController;
 
 /**
  * Servlet implementation class LoginServlet
@@ -28,22 +30,64 @@ public class LoginServlet extends HttpServlet {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		AdminModel adminModel = new AdminModel();
-		adminModel.setUsername(username);
-		adminModel.setPassword(password);
 
-		try {
-			if (AdminController.validate(adminModel)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("adminPage");
-				dispatcher.forward(request, response);
-			} else {
-				request.setAttribute("error", "Login Failed Invalid username / password");
-				RequestDispatcher rd = request.getRequestDispatcher("login");
-				rd.include(request, response);
+		if (username.contains("admin")) {
+			AdminModel adminModel = new AdminModel();
+			adminModel.setUsername(username);
+			adminModel.setPassword(password);
+			
+			UserController u = new UserController();
+
+			try {
+				if (u.validateAdmin(adminModel)) {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("adminPage");
+					dispatcher.forward(request, response);
+				} else {
+					request.setAttribute("error", "Login Failed Invalid username / password");
+					RequestDispatcher rd = request.getRequestDispatcher("login");
+					rd.include(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		}else if(username.contains("emp")){
+			EmployeeModel employeeModel = new EmployeeModel();
+			employeeModel.setEid(username);
+			employeeModel.setPassword(password);
+			UserController u = new UserController();
+			
+			try {
+				if (u.validateEmployee(employeeModel)) {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("employeeDashboard");
+					dispatcher.forward(request, response);
+				} else {
+					request.setAttribute("error", "Login Failed Invalid username / password");
+					RequestDispatcher rd = request.getRequestDispatcher("login");
+					rd.include(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else {
+			CustomerModel customerModel = new CustomerModel();
+			customerModel.setAccount_number(Long.parseLong(username));
+			customerModel.setPassword(password);
+			UserController u = new UserController();
+			
+			try {
+				if (u.validateCustomer(customerModel)) {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("customerDashboard");
+					dispatcher.forward(request, response);
+				} else {
+					request.setAttribute("error", "Login Failed Invalid username / password");
+					RequestDispatcher rd = request.getRequestDispatcher("login");
+					rd.include(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 	}
 
 }

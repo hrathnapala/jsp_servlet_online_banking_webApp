@@ -11,8 +11,8 @@
 <link href="style/css/adminStyle.css" type="text/css" rel="stylesheet"></link>
 <script type="text/javascript">
 	function generateId() {
-		document.getElementById("eid").value = 'emp'+ '_'
-				+ Math.random().toString(36).substr(2, 9);
+		document.getElementById("accountnumber").value = Math.floor((Math.random() * 10000000000) + 1);
+		document.getElementById("password").value = '_'+ Math.random().toString(36).substr(2, 9);
 	}
 
 	function validateEmail(email) {
@@ -21,23 +21,19 @@
 	}
 
 	function validate() {
-		var name = document.EmployeeForm.name.value;
-		var email = document.EmployeeForm.email.value;
-		var nic = document.EmployeeForm.nic.value;
-		var address = document.EmployeeForm.address.value;
-		var phonenumber = document.EmployeeForm.phonenumber.value;
-		var eid = document.EmployeeForm.eid.value;
-		var password = document.EmployeeForm.password.value;
+		var name = document.CustomerForm.name.value;
+		var email = document.CustomerForm.email.value;
+		var nic = document.CustomerForm.nic.value;
+		var address = document.CustomerForm.address.value;
+		var phonenumber = document.CustomerForm.phonenumber.value;
+		var eid = document.CustomerForm.eid.value;
+		var password = document.CustomerForm.password.value;
 
 		if (name == '') {
 			alert("Please Enter name");
 			document.loginForm.focus();
 			return false;
-		} else if (email == '') {
-			alert("Please Enter email");
-			document.loginForm.focus();
-			return false;
-		} else if (nic == '') {
+		}  else if (nic == '') {
 			alert("Please Enter nic");
 			document.loginForm.focus();
 			return false;
@@ -71,7 +67,7 @@
 			document.loginForm.focus();
 			return false;
 		}
-		document.forms['EmployeeForm'].submit();
+		document.forms['CustomerForm'].submit();
 	}
 </script>
 </head>
@@ -82,11 +78,11 @@
 			class="navbar navbar-expand-md navbar-dark d-flex justify-content-between"
 			style="background-color: black">
 			<div>
-				<a href="adminPage" class="navbar-brand"> Admin Dashboard </a>
+				<a href="employeeDashboard" class="navbar-brand"> Employee Dashboard </a>
 			</div>
 
 			<ul class="navbar-nav">
-				<li><a href="adminPage" class="nav-link">Users</a></li>
+				<li><a href="employeeDashboard" class="nav-link">Customers</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -94,15 +90,15 @@
 	<div class="container col-md-5" style="margin-bottom: 25px;">
 		<div class="card" style="background-color: #077058;">
 			<div class="card-body">
-				<form method="post" action="AddUserServlet" name="EmployeeForm" onsubmit="event.preventDefault(); validate();">
+				<form method="post" action="AddCustomer" name="CustomerForm">
 					<fieldset class="form-group">
 						<label>Full Name</label> <input type="text" class="form-control"
 							name="name">
 					</fieldset>
 
 					<fieldset class="form-group">
-						<label>Email</label> <input type="text" class="form-control"
-							name="email">
+						<label>Account Number</label> <input id="accountnumber" type="text" class="form-control"
+							name="accountnumber" readonly="readonly">
 					</fieldset>
 
 					<fieldset class="form-group">
@@ -111,31 +107,42 @@
 					</fieldset>
 
 					<fieldset class="form-group">
-						<label>Address</label> <input type="text" class="form-control"
-							name="address">
+						<label>Email</label> <input type="text" class="form-control"
+							name="email">
 					</fieldset>
 
 					<fieldset class="form-group">
-						<label>Phone Number</label> <input type="text"
+						<label>Address</label> <input type="text"
+							class="form-control" name="address">
+					</fieldset>
+					
+					<fieldset class="form-group">
+						<label>Phone Number</label> <input type="number"
 							class="form-control" name="phonenumber">
 					</fieldset>
 					
 					<fieldset class="form-group">
-						<label>Password</label> <input type="text"
-							class="form-control" name="password">
+						<label>Account Balance</label> <input type="number"
+							class="form-control" name="accountbalance">
+					</fieldset>
+					
+					<fieldset class="form-group">
+						<label>Account Status</label> <input style="width: 20px;height: 20px; margin-top: 20px;" type="checkbox"
+							 name="status">
+					</fieldset>
+					
+					<fieldset class="form-group">
+						<input id="password"
+							 name="password" type="hidden">
 					</fieldset>
 
-					<fieldset class="form-group">
-						<label>Employee ID</label> <input id="eid" type="text"
-							class="form-control" name="eid" readonly="readonly">
-					</fieldset>
 					<button  type="submit"
 						class="btn btn-warning">Save</button>
 					&nbsp;&nbsp;&nbsp;
 				</form>
 				<div style="text-align: center;">
 				<button onclick="return  generateId();" type="submit"
-					class="btn btn-primary">Generate Employee id</button>
+					class="btn btn-primary">Generate Account Number</button>
 				</div>				
 			</div>
 		</div>

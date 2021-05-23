@@ -6,13 +6,13 @@ public class EmployeeModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String eid;
-	private String name;
+	private  String eid;
+	private  String name;
 	private String email;
 	private String nic;
 	private String address;
 	private String phonenumber;
-	private String password;
+	private  String password;
 	
 	public EmployeeModel() {}
 	
@@ -28,7 +28,7 @@ public class EmployeeModel implements Serializable{
 		this.password = password;
 	}
 
-	public String getEid() {
+	public  String getEid() {
 		return eid;
 	}
 
@@ -36,7 +36,7 @@ public class EmployeeModel implements Serializable{
 		this.eid = eid;
 	}
 
-	public String getName() {
+	public  String getName() {
 		return name;
 	}
 
@@ -76,7 +76,7 @@ public class EmployeeModel implements Serializable{
 		this.phonenumber = phonenumber;
 	}
 
-	public String getPassword() {
+	public  String getPassword() {
 		return password;
 	}
 

@@ -46,7 +46,7 @@ public class GetUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		UserController uc = new UserController();
-		EmployeeModel um = uc.getUserDetail(id);
+		EmployeeModel um = uc.getEmployeeDetail(id);
 
 		request.setAttribute("um", um);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("edituserForm");

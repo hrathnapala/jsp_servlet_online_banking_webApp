@@ -47,7 +47,7 @@ public class DeleteUserServlet extends HttpServlet {
 
 		UserController cs = new UserController();
 
-		cs.deleteUser(eid);
+		cs.deleteEmployee(eid);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("adminPage");
 		dispatcher.forward(request, response);

@@ -57,7 +57,7 @@ public class EditUserServlet extends HttpServlet {
 
 		UserController cs = new UserController();
 		
-		int status = cs.updateUser(um, eid);
+		int status = cs.updateEmployee(um, eid);
 
 		if (status < 1) {
 			request.setAttribute("error", "Update Failed");

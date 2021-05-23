@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.obs.model.UserModel;
+import com.obs.model.EmployeeModel;
 
 import service.UserController;
 
@@ -46,15 +46,15 @@ public class AddUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 
-		String username = request.getParameter("name");
+		String eid = request.getParameter("eid");
+		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		String country = request.getParameter("country");
+		String nic = request.getParameter("nic");
+		String address = request.getParameter("address");
+		String phonenumber = request.getParameter("phonenumber");
+		String password = request.getParameter("password");
 
-		UserModel user = new UserModel();
-
-		user.setName(username);
-		user.setEmail(email);
-		user.setCountry(country);
+		EmployeeModel user = new EmployeeModel(eid, name, email, address, phonenumber, password, nic);
 
 		UserController h = new UserController();
 		h.addUsers(user);

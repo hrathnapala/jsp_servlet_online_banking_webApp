@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.obs.model.UserModel;
+import com.obs.model.EmployeeModel;
 
 import service.UserController;
 
@@ -46,7 +46,7 @@ public class GetUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		UserController uc = new UserController();
-		UserModel um = uc.getUserDetail(id);
+		EmployeeModel um = uc.getUserDetail(id);
 
 		request.setAttribute("um", um);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("edituserForm");

@@ -1,4 +1,4 @@
-<%@page import="com.obs.model.UserModel"%>
+<%@page import="com.obs.model.EmployeeModel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -31,7 +31,7 @@
 		<div class="card" style="background-color: #077058;">
 			<div class="card-body">
 				<%
-				UserModel c1 = (UserModel) request.getAttribute("um");
+				EmployeeModel c1 = (EmployeeModel) request.getAttribute("um");
 				%>
 
 				<%
@@ -43,30 +43,49 @@
 				%>
 				<form method="post" action="EditUserServlet">
 					<fieldset class="form-group">
-						<label>User Name</label> <input type="text"
-							value="<%=c1.getName()%>" class="form-control" name="name"
-							required="required">
+						<label>Full Name</label> <input value="<%=c1.getName()%>" type="text" class="form-control"
+							name="name">
 					</fieldset>
 
 					<fieldset class="form-group">
-						<label>User Email</label> <input type="text"
-							value="<%=c1.getEmail()%>" class="form-control" name="email">
+						<label>Email</label> <input value="<%=c1.getEmail()%>" type="text" class="form-control"
+							name="email">
 					</fieldset>
 
 					<fieldset class="form-group">
-						<label>User Country</label> <input type="text"
-							value="<%=c1.getCountry()%>" class="form-control" name="country">
+						<label>NIC</label> <input value="<%=c1.getNic()%>" type="text" class="form-control"
+							name="nic">
+					</fieldset>
+
+					<fieldset class="form-group">
+						<label>Address</label> <input value="<%=c1.getAddress()%>" type="text" class="form-control"
+							name="address">
+					</fieldset>
+
+					<fieldset class="form-group">
+						<label>Phone Number</label> <input value="<%=c1.getPhonenumber()%>" type="text"
+							class="form-control" name="phonenumber">
+					</fieldset>
+					
+					<fieldset class="form-group">
+						<label>Password</label> <input value="<%=c1.getPassword()%>" type="text"
+							class="form-control" name="password">
+					</fieldset>
+
+					<fieldset class="form-group">
+						<label>Employee ID</label> <input value="<%=c1.getEid()%>" type="text"
+							class="form-control" name="eid" readonly="readonly">
 					</fieldset>
 					<span style="color: red;">${error}</span>
 					<fieldset class="form-group" style="text-align: center;">
-						<input type="hidden" name="id" value="<%=c1.getId()%>" />
+						<input type="hidden" name="id" value="<%=c1.getEid()%>" />
 						<button type="submit" class="btn btn-warning">Update</button>
 					</fieldset>
 				</form>
 				<div style="text-align: center;">
 					<form id="contact" method="POST" action="DeleteUserServlet">
 						<fieldset>
-							<input type="hidden" name="id" value="<%=c1.getId()%>" />
+							<input type="hidden" name="eid" value="<%=c1.getEid()%>" />
 							<button type="submit" class="btn btn-danger">Delete</button>
 						</fieldset>
 					</form>

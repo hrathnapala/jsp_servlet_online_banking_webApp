@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.obs.model.UserModel;
+import com.obs.model.EmployeeModel;
 
 import service.UserController;
 
@@ -44,18 +44,20 @@ public class EditUserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String eid = request.getParameter("eid");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String address = request.getParameter("address");
+		String phonenumber = request.getParameter("phonenumber");
+		String password = request.getParameter("password");
+		String nic = request.getParameter("nic");
 
-		UserModel um = new UserModel();
-		um.setId(Integer.parseInt(request.getParameter("id")));
-		um.setName(request.getParameter("name"));
-		um.setEmail(request.getParameter("email"));
-		um.setCountry(request.getParameter("country"));
+		EmployeeModel um = new EmployeeModel(eid, name, email, address, phonenumber, password, nic);
 
 		UserController cs = new UserController();
-
-		cs.updateUser(um, request.getParameter("id"));
-
-		int status = cs.updateUser(um, request.getParameter("id"));
+		
+		int status = cs.updateUser(um, eid);
 
 		if (status < 1) {
 			request.setAttribute("error", "Update Failed");

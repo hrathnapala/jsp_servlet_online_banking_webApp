@@ -43,11 +43,11 @@ public class DeleteUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
+		String eid = request.getParameter("eid");
 
 		UserController cs = new UserController();
 
-		cs.deleteUser(Integer.parseInt(id));
+		cs.deleteUser(eid);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("adminPage");
 		dispatcher.forward(request, response);

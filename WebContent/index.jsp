@@ -11,6 +11,7 @@
 	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="style/css/style.css" type="text/css" rel="stylesheet"></link>
+
 </head>
 <body>
 	<header>
@@ -31,9 +32,11 @@
 		</h1>
 		<a href="#">Contact US</a>
 	</div>
-	
+
 	<footer>
-		<h1>© 2021 A+ (lka) Fitch Rating - ABC Bank PLC (PQ. 27) is a licensed CDE Bank supervised by the Central Bank of Sri Lanka All Rights Reserved.Solution by Test</h1>
+		<h1>© 2021 A+ (lka) Fitch Rating - ABC Bank PLC (PQ. 27) is a
+			licensed CDE Bank supervised by the Central Bank of Sri Lanka All
+			Rights Reserved.Solution by Test</h1>
 	</footer>
 
 </body>

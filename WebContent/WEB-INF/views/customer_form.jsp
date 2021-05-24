@@ -22,49 +22,49 @@
 
 	function validate() {
 		var name = document.CustomerForm.name.value;
-		var email = document.CustomerForm.email.value;
+		var accountnumber = document.CustomerForm.accountnumber.value;
 		var nic = document.CustomerForm.nic.value;
+		var email = document.CustomerForm.email.value;
 		var address = document.CustomerForm.address.value;
 		var phonenumber = document.CustomerForm.phonenumber.value;
-		var eid = document.CustomerForm.eid.value;
-		var password = document.CustomerForm.password.value;
+		var accountbalance = document.CustomerForm.accountbalance.value;
 
 		if (name == '') {
 			alert("Please Enter name");
-			document.loginForm.focus();
+			document.CustomerForm.focus();
 			return false;
 		}  else if (nic == '') {
 			alert("Please Enter nic");
-			document.loginForm.focus();
+			document.CustomerForm.focus();
 			return false;
 		} else if (nic.length !== 10) {
 			alert("Invalid nic");
-			document.loginForm.focus();
+			document.CustomerForm.focus();
 			return false;
-		}else if (address == '') {
-			alert("Please Enter address");
-			document.loginForm.focus();
+		}else if (email == '') {
+			alert("Please Enter Email");
+			document.CustomerForm.focus();
 			return false;
-		} else if (phonenumber == '') {
-			alert("Please Enter phonenumber");
-			document.loginForm.focus();
+		} else if (address == '') {
+			alert("Please Enter Address");
+			document.CustomerForm.focus();
 			return false;
-		}  else if (password == '') {
-			alert("Please Enter password");
-			document.loginForm.focus();
+		}  else if (phonenumber == '') {
+			alert("Please Enter Phone Number");
+			document.CustomerForm.focus();
 			return false;
-		} else if (password.length < 6) {
-			alert("Password should have atleast 6 characters");
-			document.loginForm.focus();
+		} else if (accountbalance == '') {
+			alert("Please Enter Amount");
+			document.CustomerForm.focus();
 			return false;
-		}else if (eid == '') {
-			alert("Please Generate Employee ID");
-			document.loginForm.focus();
+		}else if (accountnumber == '') {
+			alert("Please Generate Account Number");
+			document.CustomerForm.focus();
 			return false;
 		}
 		else if (!validateEmail(email)) {
 			alert("Invalid Email");
-			document.loginForm.focus();
+			document.CustomerForm.focus();
 			return false;
 		}
 		document.forms['CustomerForm'].submit();
@@ -90,7 +90,7 @@
 	<div class="container col-md-5" style="margin-bottom: 25px;">
 		<div class="card" style="background-color: #077058;">
 			<div class="card-body">
-				<form method="post" action="AddCustomer" name="CustomerForm">
+				<form method="post" action="AddCustomer" name="CustomerForm"  onsubmit="event.preventDefault(); validate();">
 					<fieldset class="form-group">
 						<label>Full Name</label> <input type="text" class="form-control"
 							name="name">

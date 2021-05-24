@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Customer Dashboard</title>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -124,24 +125,110 @@ body {
 .wrapper .main_content .info div {
 	margin-bottom: 20px;
 }
+
+.balance {
+	width: 500px;
+	padding: 40px;
+	position: relative;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #191919;
+	text-align: center;
+	border-radius: 15px;
+	color: white;
+	height: 200px;
+}
+
+.box {
+	width: 500px;
+	padding: 40px;
+	position: absolute;
+	top: 600%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #191919;
+	text-align: center;
+	border-radius: 15px;
+}
+
+.box h1 {
+	color: white;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.box input[type="text"], .box input[type="password"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #3498db;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+
+.box input[type="text"]:focus, .box input[type="password"]:focus {
+	width: 280px;
+	border-color: #2ecc71;
+}
+
+.box input[type="submit"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #2ecc71;
+	padding: 14px 40px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.box input[type="submit"]:hover {
+	background: #2ecc71;
+}
 </style>
+
+<script type="text/javascript">
+	
+	function validate() {
+		var acno1 = document.transfermoney.acno1.value;
+		var amount = document.transfermoney.amount.value;
+		var accountbalance = document.transfermoney.accountbalance.value;
+		
+		
+		if (acno1 == '') {
+			alert("Please Enter Account Number");
+			document.CustomerForm.focus();
+			return false;
+		} else if (amount == '') {
+			alert("Please Enter Amount");
+			document.CustomerForm.focus();
+			return false;
+		} else if (Number(accountbalance) - Number(amount) < 1){
+			alert("Insufficient Balance");
+			document.CustomerForm.focus();
+			return false;
+		}
+		document.forms['transfermoney'].submit();
+	}
+</script>
 </head>
 <body>
 
 	<%
 	CustomerModel c1 = (CustomerModel) request.getAttribute("cm");
 	%>
-
-	<%
-	if (request.getAttribute("error") != null) {
-	%>
-	<div class="error">${error}</div>
-	<%
-	}
-	%>
-
-
-	<div class="wrapper">
+<div class="wrapper">
 		<div class="sidebar">
 			<h2>Dashboard</h2><br> <br>
 			
@@ -191,45 +278,19 @@ body {
 				<%=c1.getName()%>
 				&nbsp;&nbsp;&nbsp;&nbsp; Account Number:
 				<%=c1.getAccount_number()%></div>
-			<div class="info" id="info">
-				<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					A sed nobis ut exercitationem atque accusamus sit natus officiis
-					totam blanditiis at eum nemo, nulla et quae eius culpa eveniet
-					voluptatibus repellat illum tenetur, facilis porro. Quae fuga odio
-					perferendis itaque alias sint, beatae non maiores magnam ad, veniam
-					tenetur atque ea exercitationem earum eveniet totam ipsam magni
-					tempora aliquid ullam possimus? Tempora nobis facere porro,
-					praesentium magnam provident accusamus temporibus! Repellendus
-					harum veritatis itaque molestias repudiandae ea corporis maiores
-					non obcaecati libero, unde ipsum consequuntur aut consectetur culpa
-					magni omnis vero odio suscipit vitae dolor quod dignissimos
-					perferendis eos? Consequuntur!</div>
-				<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					A sed nobis ut exercitationem atque accusamus sit natus officiis
-					totam blanditiis at eum nemo, nulla et quae eius culpa eveniet
-					voluptatibus repellat illum tenetur, facilis porro. Quae fuga odio
-					perferendis itaque alias sint, beatae non maiores magnam ad, veniam
-					tenetur atque ea exercitationem earum eveniet totam ipsam magni
-					tempora aliquid ullam possimus? Tempora nobis facere porro,
-					praesentium magnam provident accusamus temporibus! Repellendus
-					harum veritatis itaque molestias repudiandae ea corporis maiores
-					non obcaecati libero, unde ipsum consequuntur aut consectetur culpa
-					magni omnis vero odio suscipit vitae dolor quod dignissimos
-					perferendis eos? Consequuntur!</div>
-				<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					A sed nobis ut exercitationem atque accusamus sit natus officiis
-					totam blanditiis at eum nemo, nulla et quae eius culpa eveniet
-					voluptatibus repellat illum tenetur, facilis porro. Quae fuga odio
-					perferendis itaque alias sint, beatae non maiores magnam ad, veniam
-					tenetur atque ea exercitationem earum eveniet totam ipsam magni
-					tempora aliquid ullam possimus? Tempora nobis facere porro,
-					praesentium magnam provident accusamus temporibus! Repellendus
-					harum veritatis itaque molestias repudiandae ea corporis maiores
-					non obcaecati libero, unde ipsum consequuntur aut consectetur culpa
-					magni omnis vero odio suscipit vitae dolor quod dignissimos
-					perferendis eos? Consequuntur!</div>
-			</div>
 		</div>
+		<form name="transfermoney" class="box" action="TransferMoney"
+			method="post" onsubmit="event.preventDefault(); validate();">
+			<h1>Money Transfer</h1>
+			<input type="text" name="acno" value="<%=c1.getAccount_number()%>"
+				readonly="readonly"> <input type="text"
+				name="accountbalance" value="<%=c1.getAccount_balance()%>"
+				readonly="readonly"> <input type="text" name="acno1"
+				placeholder="Account Number"> <input type="text"
+				name="amount" placeholder="Transfer Amount"> <span
+				style="color: red;">${error}</span> <input type="submit" name=""
+				value="Transfer Money">
+		</form>
 	</div>
 
 </body>

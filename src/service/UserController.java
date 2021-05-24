@@ -410,7 +410,7 @@ public class UserController {
 
 		return status;
 	}
-	
+
 	public boolean validateCustomer(CustomerModel customerModel) {
 		boolean status = false;
 
@@ -429,4 +429,35 @@ public class UserController {
 
 		return status;
 	}
+
+//	public int TransferMoney(long acno, Double balance) {
+//		int status = 0;
+//		try {
+//			con = DBConnection.getDBConnection();
+//			prepa = con.prepareStatement(
+//					"update user as c set c.account_balance = ? where c.account_number = ?");
+//			prepa.setString(1, c1.getName());
+//			prepa.setString(2, c1.getNic());
+//			
+//
+//			status = prepa.executeUpdate();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//
+//		finally {
+//			try {
+//				if (prepa != null) {
+//					prepa.close();
+//				}
+//				if (con != null) {
+//					con.close();
+//				}
+//			} catch (SQLException e) {
+//			}
+//		}
+//
+//		return status;
+//	}
 }

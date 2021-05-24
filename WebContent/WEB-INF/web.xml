@@ -92,4 +92,20 @@
 		<servlet-name>customerDashboard</servlet-name>
 		<url-pattern>/customerDashboard</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>accountBalance</servlet-name>
+		<jsp-file>/WEB-INF/views/accountBalance.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>accountBalance</servlet-name>
+		<url-pattern>/accountBalance</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>transferMoney</servlet-name>
+		<jsp-file>/WEB-INF/views/transferMoney.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>transferMoney</servlet-name>
+		<url-pattern>/transferMoney</url-pattern>
+	</servlet-mapping>	
 </web-app>

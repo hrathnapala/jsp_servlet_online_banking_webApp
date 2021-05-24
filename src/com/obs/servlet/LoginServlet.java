@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			AdminModel adminModel = new AdminModel();
 			adminModel.setUsername(username);
 			adminModel.setPassword(password);
-			
+
 			UserController u = new UserController();
 
 			try {
@@ -50,12 +50,12 @@ public class LoginServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(username.contains("emp")){
+		} else if (username.contains("emp")) {
 			EmployeeModel employeeModel = new EmployeeModel();
 			employeeModel.setEid(username);
 			employeeModel.setPassword(password);
 			UserController u = new UserController();
-			
+
 			try {
 				if (u.validateEmployee(employeeModel)) {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("employeeDashboard");
@@ -68,14 +68,16 @@ public class LoginServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			CustomerModel customerModel = new CustomerModel();
 			customerModel.setAccount_number(Long.parseLong(username));
 			customerModel.setPassword(password);
 			UserController u = new UserController();
-			
+
 			try {
 				if (u.validateCustomer(customerModel)) {
+					CustomerModel um = u.getCustomerDetail(customerModel.getAccount_number());
+					request.setAttribute("cm", um);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("customerDashboard");
 					dispatcher.forward(request, response);
 				} else {
@@ -87,7 +89,7 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 }

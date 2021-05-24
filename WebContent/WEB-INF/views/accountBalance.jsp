@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Customer Dashboard</title>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -124,6 +125,20 @@ body {
 .wrapper .main_content .info div {
 	margin-bottom: 20px;
 }
+
+.balance {
+	width: 500px;
+	padding: 40px;
+	position: relative;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #191919;
+	text-align: center;
+	border-radius: 15px;
+	color: white;
+	height: 200px;
+}
 </style>
 </head>
 <body>
@@ -191,43 +206,9 @@ body {
 				<%=c1.getName()%>
 				&nbsp;&nbsp;&nbsp;&nbsp; Account Number:
 				<%=c1.getAccount_number()%></div>
-			<div class="info" id="info">
-				<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					A sed nobis ut exercitationem atque accusamus sit natus officiis
-					totam blanditiis at eum nemo, nulla et quae eius culpa eveniet
-					voluptatibus repellat illum tenetur, facilis porro. Quae fuga odio
-					perferendis itaque alias sint, beatae non maiores magnam ad, veniam
-					tenetur atque ea exercitationem earum eveniet totam ipsam magni
-					tempora aliquid ullam possimus? Tempora nobis facere porro,
-					praesentium magnam provident accusamus temporibus! Repellendus
-					harum veritatis itaque molestias repudiandae ea corporis maiores
-					non obcaecati libero, unde ipsum consequuntur aut consectetur culpa
-					magni omnis vero odio suscipit vitae dolor quod dignissimos
-					perferendis eos? Consequuntur!</div>
-				<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					A sed nobis ut exercitationem atque accusamus sit natus officiis
-					totam blanditiis at eum nemo, nulla et quae eius culpa eveniet
-					voluptatibus repellat illum tenetur, facilis porro. Quae fuga odio
-					perferendis itaque alias sint, beatae non maiores magnam ad, veniam
-					tenetur atque ea exercitationem earum eveniet totam ipsam magni
-					tempora aliquid ullam possimus? Tempora nobis facere porro,
-					praesentium magnam provident accusamus temporibus! Repellendus
-					harum veritatis itaque molestias repudiandae ea corporis maiores
-					non obcaecati libero, unde ipsum consequuntur aut consectetur culpa
-					magni omnis vero odio suscipit vitae dolor quod dignissimos
-					perferendis eos? Consequuntur!</div>
-				<div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					A sed nobis ut exercitationem atque accusamus sit natus officiis
-					totam blanditiis at eum nemo, nulla et quae eius culpa eveniet
-					voluptatibus repellat illum tenetur, facilis porro. Quae fuga odio
-					perferendis itaque alias sint, beatae non maiores magnam ad, veniam
-					tenetur atque ea exercitationem earum eveniet totam ipsam magni
-					tempora aliquid ullam possimus? Tempora nobis facere porro,
-					praesentium magnam provident accusamus temporibus! Repellendus
-					harum veritatis itaque molestias repudiandae ea corporis maiores
-					non obcaecati libero, unde ipsum consequuntur aut consectetur culpa
-					magni omnis vero odio suscipit vitae dolor quod dignissimos
-					perferendis eos? Consequuntur!</div>
+			<div class="balance">
+				<h1>Account Balance</h1>
+				<h2><%=c1.getAccount_balance()%></h2>
 			</div>
 		</div>
 	</div>

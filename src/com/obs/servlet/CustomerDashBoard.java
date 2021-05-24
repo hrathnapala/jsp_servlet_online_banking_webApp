@@ -10,21 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.obs.model.CustomerModel;
-import com.obs.model.EmployeeModel;
 
 import service.UserController;
 
 /**
- * Servlet implementation class GetCustomer
+ * Servlet implementation class CustomerDashBoard
  */
-@WebServlet("/GetCustomer")
-public class GetCustomer extends HttpServlet {
+@WebServlet("/CustomerDashBoard")
+public class CustomerDashBoard extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCustomer() {
+    public CustomerDashBoard() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,11 +40,13 @@ public class GetCustomer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String acno = request.getParameter("acno");
 		UserController uc = new UserController();
 		CustomerModel um = uc.getCustomerDetail(Long.parseLong(acno));
-		request.setAttribute("um", um);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("customerEditForm");
+
+		request.setAttribute("cm", um);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("customerDashboard");
 		dispatcher.forward(request, response);
 	}
 

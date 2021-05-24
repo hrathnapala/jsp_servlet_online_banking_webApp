@@ -12,59 +12,60 @@
 <link href="style/css/adminStyle.css" type="text/css" rel="stylesheet"></link>
 <script type="text/javascript">
 	
-	function validateEmail(email) {
-		var re = /\S+@\S+\.\S+/;
-		return re.test(email);
-	}
+function validateEmail(email) {
+	var re = /\S+@\S+\.\S+/;
+	return re.test(email);
+}
 
-	function validate() {
-		var name = document.CustomerForm.name.value;
-		var email = document.CustomerForm.email.value;
-		var nic = document.CustomerForm.nic.value;
-		var address = document.CustomerForm.address.value;
-		var phonenumber = document.CustomerForm.phonenumber.value;
-		var eid = document.CustomerForm.eid.value;
-		var password = document.CustomerForm.password.value;
+function validate() {
+	var name = document.CustomerForm.name.value;
+	var accountnumber = document.CustomerForm.accountnumber.value;
+	var nic = document.CustomerForm.nic.value;
+	var email = document.CustomerForm.email.value;
+	var address = document.CustomerForm.address.value;
+	var phonenumber = document.CustomerForm.phonenumber.value;
+	var accountbalance = document.CustomerForm.accountbalance.value;
 
-		if (name == '') {
-			alert("Please Enter name");
-			document.loginForm.focus();
-			return false;
-		} else if (nic == '') {
-			alert("Please Enter nic");
-			document.loginForm.focus();
-			return false;
-		} else if (nic.length !== 10) {
-			alert("Invalid nic");
-			document.loginForm.focus();
-			return false;
-		} else if (address == '') {
-			alert("Please Enter address");
-			document.loginForm.focus();
-			return false;
-		} else if (phonenumber == '') {
-			alert("Please Enter phonenumber");
-			document.loginForm.focus();
-			return false;
-		} else if (password == '') {
-			alert("Please Enter password");
-			document.loginForm.focus();
-			return false;
-		} else if (password.length < 6) {
-			alert("Password should have atleast 6 characters");
-			document.loginForm.focus();
-			return false;
-		} else if (eid == '') {
-			alert("Please Generate Employee ID");
-			document.loginForm.focus();
-			return false;
-		} else if (!validateEmail(email)) {
-			alert("Invalid Email");
-			document.loginForm.focus();
-			return false;
-		}
-		document.forms['CustomerForm'].submit();
+	if (name == '') {
+		alert("Please Enter name");
+		document.CustomerForm.focus();
+		return false;
+	}  else if (nic == '') {
+		alert("Please Enter nic");
+		document.CustomerForm.focus();
+		return false;
+	} else if (nic.length !== 10) {
+		alert("Invalid nic");
+		document.CustomerForm.focus();
+		return false;
+	}else if (email == '') {
+		alert("Please Enter Email");
+		document.CustomerForm.focus();
+		return false;
+	} else if (address == '') {
+		alert("Please Enter Address");
+		document.CustomerForm.focus();
+		return false;
+	}  else if (phonenumber == '') {
+		alert("Please Enter Phone Number");
+		document.CustomerForm.focus();
+		return false;
+	} else if (accountbalance == '') {
+		alert("Please Enter Amount");
+		document.CustomerForm.focus();
+		return false;
+	}else if (accountnumber == '') {
+		alert("Please Generate Account Number");
+		document.CustomerForm.focus();
+		return false;
 	}
+	else if (!validateEmail(email)) {
+		alert("Invalid Email");
+		document.CustomerForm.focus();
+		return false;
+	}
+	document.forms['CustomerForm'].submit();
+}
 </script>
 </head>
 
@@ -97,7 +98,7 @@
 				<%
 				}
 				%>
-				<form method="post" action="EditCustomer" name="CustomerForm">
+				<form method="post" action="EditCustomer" name="CustomerForm" onsubmit="event.preventDefault(); validate();">
 					<fieldset class="form-group">
 						<label>Full Name</label> <input value="<%=c1.getName()%>"
 							type="text" class="form-control" name="name">
